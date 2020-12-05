@@ -33,7 +33,7 @@ def part1():
   return valid
 
 validators = {
-  "byr": re.compile("^(19[2-9][0-9]|200[1-2])$"),
+  "byr": re.compile("^(19[2-9][0-9]|200[0-2])$"),
   "iyr": re.compile("^(201[0-9]|2020)$"),
   "eyr": re.compile("^(202[0-9]|2030)$"),
   "hgt": re.compile("^((1[5-8][0-9]|19[0-3])cm|(59|6[0-9]|7[0-6])in)$"),
@@ -59,7 +59,6 @@ def part2():
         req_match = 0
       else:
         for i in range(len(match)):
-          # Validate the field value
           field, value = match[i].split(":")
 
           # Validate the value, still have to check if required field due to not wanting cid to count
