@@ -1,7 +1,5 @@
 import re
 
-#muted lavender bags contain 5 dull brown bags, 4 pale maroon bags, 2 drab orange bags.
-
 bag_contents_lookup = dict()
 bag_parent_lookup = dict()
 bag_regex = re.compile("^([a-z ]+) bags contain ((?:(?:[0-9a-z ]+)(, )*)+)\.$")
@@ -46,7 +44,6 @@ def get_inner_bag_count(bag_type):
     inner_bag_count += inner_bag[0] + inner_bag[0] * get_inner_bag_count(inner_bag[1])
 
   return inner_bag_count
-
 
 def part1():
   unique_bag_types = set(get_parent_bag_types("shiny gold"))
