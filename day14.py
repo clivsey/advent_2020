@@ -18,11 +18,9 @@ def part1():
     else:
       # Get binary reprenstation of num
       mem_address = instruction[1]
-      num_str = bin(instruction[2])[2:]
-      pad_amount = NUM_BITS - len(num_str)
 
-      # Convert to list to make the chars mutable
-      num_str = list("0" * pad_amount + num_str)
+      # Turn into bin/list to make char mutable
+      num_str = list(format(instruction[2], "036b"))
 
       # Flip any bits from mask
       for i in range(NUM_BITS):
@@ -31,11 +29,7 @@ def part1():
 
       mem_values[mem_address] = int("".join(num_str), 2)
 
-  sum = 0
-  for value in mem_values.values():
-    sum += value
-
-  return sum
+  return sum(mem_values.values())
 
 def part2():
   mem_values = dict()
@@ -70,11 +64,7 @@ def part2():
       else:
         mem_values[int(mem_address, 2)] = instruction[2]
 
-  sum = 0
-  for value in mem_values.values():
-    sum += value
-
-  return sum
+  return sum(mem_values.values())
 
 print("Part 1 Result: ", part1())
 print("Part 2 Result: ", part2())
